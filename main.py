@@ -68,6 +68,6 @@ if st.button('Get prediction about your dish'):
         
     else:
        
-        with col12:
+        with col10:
             st.header("Your food is not recommended")
      
