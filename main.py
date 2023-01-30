@@ -63,11 +63,10 @@ if st.button('Get prediction about your dish'):
     result = pipe.predict(input_df)
     if result==1:
         
-        with col10:
             st.header("Your food is recommended")
         
     else:
        
-        with col10:
+     
             st.header("Your food is not recommended")
      
