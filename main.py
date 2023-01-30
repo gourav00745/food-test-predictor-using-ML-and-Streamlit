@@ -16,7 +16,7 @@ st.markdown(
     f"""
         <style>
         .stApp {{
-            background-image: url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg");
+            background-image: url("https://www.pixelstalk.net/wp-content/uploads/images5/4K-Food-HD-Wallpaper-Free-download.jpghttps://www.pixelstalk.net/wp-content/uploads/images5/4K-Food-HD-Wallpaper-Free-download.jpg");
             background-attachment: fixed;
             background-size: cover
         }}
