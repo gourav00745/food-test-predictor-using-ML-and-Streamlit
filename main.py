@@ -10,7 +10,7 @@ st.title(' \n')
 st.title(' \n')
 st.title(' \n')
 st.title(' \n')
-st.title('\n\n Dish Recommendation System')
+st.title('\n\n Food taste predictor ')
 
 st.markdown(
     f"""
