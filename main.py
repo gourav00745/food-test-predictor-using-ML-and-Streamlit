@@ -62,18 +62,12 @@ if st.button('Get prediction about your dish'):
       'calories': [calories], 'fat': [fat], 'carbs': [carbs], 'protine': [protine],'rating': [rating]})
     result = pipe.predict(input_df)
     if result==1:
-        image = Image.open("C:/Users/chand/Downloads/thumbs up.png")
-        new_image = image.resize((70, 70))
-        col10, mid, col11 = st.columns([35,1,20])
+        
         with col10:
-            st.header("Your Dish is recommended")
-        with col11:
-         st.image(new_image)
+            st.header("Your food is recommended")
+        
     else:
-        image = Image.open("C:/Users/chand/Downloads/thumbs down.png")
-        new_image = image.resize((70, 70))
-        col12, mid, col13 = st.columns([45, 1, 20])
+       
         with col12:
-            st.header("Your Dish is not recommended")
-        with col13:
-            st.image(new_image)
+            st.header("Your food is not recommended")
+     
