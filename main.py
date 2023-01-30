@@ -1,20 +1,29 @@
 import streamlit as st
 import pickle
 import pandas as pd
+from PIL import Image
 
+pipe = pickle.load(open('food.pkl', 'rb'))
 
-pipe = pickle.load(open('food.pkl','rb'))
+st.title('   \n')
+st.title(' \n')
+st.title(' \n')
+st.title(' \n')
+st.title(' \n')
+st.title('\n\n Dish Recommendation System')
 
-st.title('Food taste predictor')
-
-col1, col2 = st.columns(2)
-
-with col1:
-    addition_time = st.number_input('Additional Time')
-with col2:
-    servings = st.number_input('No of people you served the dish')
-
-
+st.markdown(
+    f"""
+        <style>
+        .stApp {{
+            background-image: url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg");
+            background-attachment: fixed;
+            background-size: cover
+        }}
+        </style>
+        """,
+    unsafe_allow_html=True
+)
 
 col3,col4,col5 = st.columns(3)
 
@@ -23,9 +32,17 @@ with col3:
 with col4:
     cook_time = st.number_input('Cooking Time')
 with col5:
-    total_time = st.number_input('Total Time')
+    addition_time = st.number_input('Additional Time ')
 
-calories = st.number_input('Total calories')
+total_time = prep_time + cook_time + addition_time
+
+col1, col2 = st.columns(2)
+
+with col1:
+    servings = st.number_input('No. of people the dish is served ')
+with col2:
+    rating = st.number_input('Average rating')
+
 
 col6,col7,col8,col9 = st.columns(4)
 with col6:
@@ -35,18 +52,28 @@ with col7:
 with col8:
     protine = st.number_input('Total Protein')
 with col9:
-    rating = st.number_input('Average rating')
+    calories = st.number_input('Total calories')
 
-if st.button('Your dish will be'):
+if st.button('Get prediction about your dish'):
 
 
     input_df = pd.DataFrame(
-     {'addition_time': [addition_time], 'servings': [servings],'prep_time':[prep_time], 'cook_time': [cook_time],'total_time': [total_time],
+     {'addition_time': [addition_time], 'servings': [servings],'prep_time': [prep_time], 'cook_time': [cook_time], 'total_time': [total_time],
       'calories': [calories], 'fat': [fat], 'carbs': [carbs], 'protine': [protine],'rating': [rating]})
     result = pipe.predict(input_df)
     if result==1:
-
-        st.header("Good")
+        image = Image.open("C:/Users/chand/Downloads/thumbs up.png")
+        new_image = image.resize((70, 70))
+        col10, mid, col11 = st.columns([35,1,20])
+        with col10:
+            st.header("Your Dish is recommended")
+        with col11:
+         st.image(new_image)
     else:
-        st.header("Bad")
-
+        image = Image.open("C:/Users/chand/Downloads/thumbs down.png")
+        new_image = image.resize((70, 70))
+        col12, mid, col13 = st.columns([45, 1, 20])
+        with col12:
+            st.header("Your Dish is not recommended")
+        with col13:
+            st.image(new_image)
